@@ -1,0 +1,49 @@
+@namespace("com.example")
+protocol SendEmailProtocol {
+  enum EmailStatus {
+       EmailRequested, EmailSent, EmailFailed
+  }
+
+  enum CorrelationType {
+       M
+  }
+
+  record SendEmail {
+    @logicalType("uuid")
+    string id;
+    @logicalType("uuid")
+    string correlationId;
+    CorrelationType correlationType;
+    string email;
+    string body;
+    EmailStatus emailStatus;
+  }
+  
+  record SendEmailRequest {
+    @logicalType("uuid")
+    string id;
+    @logicalType("uuid")
+    string correlationId;
+    CorrelationType correlationType;
+    string email;
+    string body;
+  }
+
+  record SendEmailSent {
+    @logicalType("uuid")
+    string id;
+    @logicalType("uuid")
+    string correlationId;
+    CorrelationType correlationType;
+  }
+
+  record SendEmailFailed {
+    @logicalType("uuid")
+    string id;
+    @logicalType("uuid")
+    string correlationId;
+    CorrelationType correlationType;
+    string email;
+    string body;
+  }
+}
